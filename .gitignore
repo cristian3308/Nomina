@@ -1,0 +1,21 @@
+# Sistema de archivos
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+*.pyc
+*.pyo
+*.pyd
+*.env
+
+# Entorno virtual
+venv/
+env/
+
+# Archivos estáticos y media
+/static/
+/media/
+
+# Configuraciones sensibles
+.env

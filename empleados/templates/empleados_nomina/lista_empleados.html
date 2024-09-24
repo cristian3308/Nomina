@@ -1,0 +1,117 @@
+<!-- empleados_nomina/lista_empleados.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .btn-edit {
+            background-color: #28a745;
+        }
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+        .btn-detail {
+            background-color: #17a2b8;
+        }
+        .btn-detail:hover {
+            background-color: #138496;
+        }
+        .btn-create {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+        }
+        .btn-create:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Empleados</h1>
+        <a href="{% url 'crear_empleado' %}" class="btn btn-create">Crear Nuevo Empleado</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Fecha de Contratación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.nombre }}</td>
+                    <td>{{ empleado.apellido }}</td>
+                    <td>{{ empleado.email }}</td>
+                    <td>{{ empleado.telefono }}</td>
+                    <td>{{ empleado.fecha_contratacion }}</td>
+                    <td>
+                        <a href="{% url 'editar_empleado' empleado.id %}" class="btn btn-edit">Editar</a>
+                        <a href="{% url 'detalle_empleados' empleado.id %}" class="btn btn-detail">Detalles</a>
+                    </td>  
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'home' %}" class="btn-back">Volver al menu principal</a>
+    </div>
+</body>
+</html>
+
+   
+
